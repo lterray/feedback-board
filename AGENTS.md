@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Feedback board: Angular app in `apps/web`, NestJS API in `apps/api`, npm workspaces. Requirements: `docs/requirements.md`.
+Feedback board: Angular app in `apps/web`, NestJS API in `apps/api`, npm workspaces. Requirements: `docs/requirements.md`. Use the terms in `GLOSSARY.md`; decisions are in `docs/adr/`.
 
 - Node from `.nvmrc`, npm only (`packageManager` in `package.json`). Install with `npm ci`.
 - `npm run check:fast`: format, lint, unit tests. Run it before you finish; a Stop hook runs it too.
