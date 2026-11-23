@@ -9,6 +9,10 @@ updates:
         patterns: ['@angular/*', '@angular-eslint/*', 'angular-eslint']
       nestjs:
         patterns: ['@nestjs/*']
+    ignore:
+      # Node is pinned to 24 in .nvmrc; its types follow that major.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
