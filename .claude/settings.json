@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "company": {
+      "source": {
+        "source": "github",
+        "repo": "lterray/company-ai-tools"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "company-ai-tools@company": true
+  }
+}
