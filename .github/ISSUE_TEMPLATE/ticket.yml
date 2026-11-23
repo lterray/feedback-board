@@ -1,0 +1,51 @@
+name: Ticket
+description: A thin vertical slice of work, written so an agent or a person can build it.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write behaviour, not steps, in the terms of `GLOSSARY.md`, and leave out file paths.
+        Add the `ready-for-agent` label only when every point in
+        [the definition](https://github.com/lterray/feedback-board/blob/main/docs/agents/ready-for-agent.md) holds.
+  - type: textarea
+    id: what
+    attributes:
+      label: What to build
+      description: What a team member can do or see once this ships, end to end.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: One line each, every one checkable by a test or a short demo. Include empty states, invalid input and failures.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: Adjacent work this ticket must not do.
+      value: |
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: blocked-by
+    attributes:
+      label: Blocked by
+      description: Issue numbers that must close first, or "None". Also add them as GitHub "blocked by" links.
+      placeholder: 'None (can start immediately)'
+    validations:
+      required: true
+  - type: checkboxes
+    id: ready
+    attributes:
+      label: Ready for an agent?
+      description: Tick all of these before adding the `ready-for-agent` label.
+      options:
+        - label: No decision is left open; anything hard to reverse is in an ADR or the requirements
+        - label: One agent can build and test it in a single session
+        - label: It needs nothing outside the repo (credentials, external accounts, production data)

@@ -8,5 +8,6 @@ Feedback board: Angular app in `apps/web`, NestJS API in `apps/api`, npm workspa
 - Add a dependency to the app that uses it: `npm install <pkg> -w web` or `-w api`.
 - `apps/web` and `apps/api` never import each other; they talk over HTTP. dependency-cruiser enforces it.
 - Validate API input with Zod schemas through Nest's `StandardSchemaValidationPipe`, which is registered globally.
+- Take only tickets labelled `ready-for-agent`; `docs/agents/ready-for-agent.md` says what that promises and what done means.
 - Never raise a lint limit, lower a coverage floor or add an ignore to make a check pass. Fix the code, or ask.
 - When you repeat a mistake, add a lint rule, test or hook for it, not more text here.
