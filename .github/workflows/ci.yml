@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Full check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use the pinned npm
+        run: npm install -g "$(node -p "require('./package.json').packageManager")"
+      - run: npm ci
+      - name: Install the Playwright browser
+        run: npx playwright install --with-deps chromium
+      # Format, lint, type check, framework builds, unit tests with coverage floors,
+      # Knip, architecture rules and end-to-end tests.
+      - run: npm run check
+      - uses: actions/upload-artifact@v5
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  security:
+    name: Security scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Scan for committed secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+      - name: Scan dependencies for known vulnerabilities
+        run: npm audit --audit-level=high

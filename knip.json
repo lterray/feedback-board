@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": [".claude/skills/**"],
+  "workspaces": {
+    ".": {
+      "entry": [".claude/hooks/*.mjs"]
+    },
+    "apps/api": {
+      "ignoreDependencies": ["@types/express"]
+    },
+    "apps/web": {}
+  }
+}

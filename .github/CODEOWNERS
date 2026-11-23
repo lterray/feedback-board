@@ -1,0 +1,16 @@
+# Guardrail files: agents raise thresholds and relax rules when they are allowed to.
+# Changes here need a Code Owner's review once branch rules require it.
+/.github/                 @lterray
+/.claude/                 @lterray
+/.husky/                  @lterray
+/eslint.config.js         @lterray
+/.dependency-cruiser.cjs  @lterray
+/knip.json                @lterray
+/.lintstagedrc.json       @lterray
+/.prettierrc.json         @lterray
+/playwright.config.ts     @lterray
+/**/tsconfig*.json        @lterray
+/**/vitest.config*.ts     @lterray
+/apps/web/angular.json    @lterray
+/package.json             @lterray
+/package-lock.json        @lterray

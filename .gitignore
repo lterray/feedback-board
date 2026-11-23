@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build and tool output
+dist/
+out-tsc/
+tmp/
+coverage/
+.angular/
+playwright-report/
+test-results/
+blob-report/
+__screenshots__/
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Local agent settings
+.claude/settings.local.json

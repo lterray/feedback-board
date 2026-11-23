@@ -1,0 +1,43 @@
+{
+  "name": "feedback-board",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@12.2.2",
+  "engines": {
+    "node": ">=24.21.0 <25",
+    "npm": ">=12.2.2"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "test:cov": "npm run test:cov --workspaces",
+    "test:e2e": "npm run test:e2e -w api && playwright test",
+    "typecheck": "tsc -p tsconfig.json && npm run typecheck --workspaces",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "knip": "knip",
+    "arch": "depcruise apps --output-type err-long",
+    "check:fast": "npm run format:check && npm run lint && npm run test",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run build && npm run test:cov && npm run knip && npm run arch && npm run test:e2e",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^24.19.2",
+    "angular-eslint": "^22.8.0",
+    "dependency-cruiser": "^18.9.0",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "knip": "^6.48.0",
+    "lint-staged": "^17.6.2",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.74.0"
+  }
+}

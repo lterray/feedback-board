@@ -1,0 +1,8 @@
+package-lock.json
+skills-lock.json
+.claude/skills/
+coverage/
+dist/
+.angular/
+playwright-report/
+test-results/

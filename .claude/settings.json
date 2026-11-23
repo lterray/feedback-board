@@ -9,5 +9,31 @@
   },
   "enabledPlugins": {
     "company-ai-tools@company": true
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Bash(git commit --no-verify:*)",
+      "Bash(git commit -n:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ],
+    "ask": ["Bash(git push:*)"]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/check-fast.mjs\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
   }
 }
